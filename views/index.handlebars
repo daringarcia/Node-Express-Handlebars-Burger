@@ -1,0 +1,78 @@
+<div class="container">
+
+    <div class="jumbotron">
+        <h1>Eat Da Burger - We love Burgers!</h1>
+        <br>
+        <h2>Select from our list of burgers</h2>
+        <panel>
+            <form class="create-form">
+                <div class="form-group">
+                    <select data-placeholder="" id="newburger" name="burger">
+                        <option value="Nothing Selected" selected>Please Select a Burger</option>
+                        <option value="Baconator">Baconator</option>
+                        <option value="Son of Baconator">Son of Baconator</option>
+                        <option value="BBQ Charburger">BBQ Charburger</option>
+                        <option value="Big Mac">Big Mac</option>
+                        <option value="Quarter Pounder">Quarter Pounder</option>
+                        <option value="Double Quarter Pounder">Double Quarter Pounder</option>
+                        <option value="Whopper">Whopper</option>
+                        <option value="Dave's Classic">"Dave's Classic"</option>
+                        <option value="The BEAST">The BEAST</option>
+                    </select>
+
+                    <button type="submit" class="btn btn-success" id="addburger">
+                        <span class="fa fa-check"></span>
+                    </button>
+                </div>
+            </form>
+        </panel>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading" id="leftside"><strong>Burgers available</strong>
+                    <p>Click <span class="fa fa-cutlery"></span> once you're ready to chow down</p>
+                </div>
+                <div class="panel-body">
+
+                    <ul>
+                        {{#each burgers}}
+                        {{#unless devoured}}
+
+                        <span><strong> {{this.id}} - {{this.burger_name}}</strong></span>
+                        <button type="button" class="eatburger btn btn-warning" id="eatbutton" data-id="{{this.id}}"
+                            data-newDevoured="{{devour}}"><span class="fa fa-cutlery"></span></button>
+                        <hr>
+                        {{/unless}}
+                        {{/each}}
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading" id="rightside"><strong>Burgers devoured</strong>
+                    <p>Click <span class="fa fa-trash"></span> to remove the burgers you've devoured</p>
+                </div>
+                <div class="panel-body">
+                    <ul>
+                        {{#each burgers}}
+                        {{#if devoured}}
+                        <span><strong> {{this.id}} - {{this.burger_name}}</strong></span>
+                        <button type="button" class="trashburger btn btn-danger" id="trashbutton" data-id="{{this.id}}"
+                            data-newDevoured="{{devour}}"><span class="fa fa-trash"></span></button>
+                        <hr>
+                        {{/if}}
+                        {{/each}}
+                    </ul>
+
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
